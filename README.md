@@ -11,7 +11,7 @@ Paint clip widgets with shadows.
 ```yaml
 [...]
 dependencies:
-  badge: any
+  clip_shadow: any
 [...]
 ```
 
