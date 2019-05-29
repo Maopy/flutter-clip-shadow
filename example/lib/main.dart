@@ -1,5 +1,5 @@
-import 'package:example/clip_shadow.dart';
-import 'package:example/clipper.dart';
+import 'package:clip_shadow/clip_shadow.dart';
+import './clipper.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
