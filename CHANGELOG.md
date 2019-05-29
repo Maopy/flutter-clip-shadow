@@ -1,9 +1,9 @@
 # CHANGE LOG
 
-## [0.0.2] - 2019-05-28
+## [0.2.0] - 2019-05-29
+
+* Support all BoxShadow class properties!
+
+## [0.1.0] - 2019-05-28
 
 * draw clip shadows.
-
-## [0.0.1] - 2019-05-27
-
-* initial release.

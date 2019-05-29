@@ -21,8 +21,8 @@ class _ClipShadowPainter extends CustomPainter {
       var spreadSize = Size(size.width + shadow.spreadRadius * 2, size.height + shadow.spreadRadius * 2);
       print(spreadSize);
       var clipPath = clipper.getClip(spreadSize).shift(Offset(
-          shadow.offset.dx - shadow.spreadRadius,
-          shadow.offset.dy - shadow.spreadRadius
+        shadow.offset.dx - shadow.spreadRadius,
+        shadow.offset.dy - shadow.spreadRadius
       ));
       canvas.drawPath(clipPath, paint);
 //      canvas.drawShadow(clipper.getClip(size), shadow.color, shadow.spreadRadius, true);
