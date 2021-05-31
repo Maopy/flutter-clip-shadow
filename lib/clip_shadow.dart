@@ -3,29 +3,30 @@ library clip_shadow;
 import 'package:flutter/widgets.dart';
 
 class _ClipShadowPainter extends CustomPainter {
-  /// If non-null, determines which clip to use.
-  final CustomClipper<Path> clipper;
-
-  /// A list of shadows cast by this box behind the box.
-  final List<BoxShadow> clipShadow;
-
-  _ClipShadowPainter({
-    @required this.clipper,
-    @required this.clipShadow
+  const _ClipShadowPainter({
+    required this.clipper,
+    required this.boxShadows,
   });
+  
+  final CustomClipper<Path> clipper;
+  final List<BoxShadow> boxShadows;
 
   @override
   void paint(Canvas canvas, Size size) {
-    clipShadow.forEach((BoxShadow shadow) {
-      var paint = shadow.toPaint();
-      var spreadSize = Size(size.width + shadow.spreadRadius * 2, size.height + shadow.spreadRadius * 2);
-      var clipPath = clipper.getClip(spreadSize).shift(Offset(
-          shadow.offset.dx - shadow.spreadRadius,
-          shadow.offset.dy - shadow.spreadRadius
-      ));
+    for (final shadow in boxShadows) {
+      final spreadSize = Size(
+        size.width + shadow.spreadRadius * 2,
+        size.height + shadow.spreadRadius * 2,
+      );
+      final clipPath = clipper.getClip(spreadSize).shift(
+            Offset(
+              shadow.offset.dx - shadow.spreadRadius,
+              shadow.offset.dy - shadow.spreadRadius,
+            ),
+          );
+      final paint = shadow.toPaint();
       canvas.drawPath(clipPath, paint);
-//      canvas.drawShadow(clipper.getClip(size), shadow.color, shadow.spreadRadius, true);
-    });
+    }
   }
 
   @override
@@ -45,9 +46,9 @@ class ClipShadow extends StatelessWidget {
   final Widget child;
 
   ClipShadow({
-    @required this.boxShadow,
-    @required this.clipper,
-    @required this.child
+    required this.boxShadow,
+    required this.clipper,
+    required this.child
   });
 
   @override
